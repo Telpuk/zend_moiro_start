@@ -30,13 +30,17 @@
 				<span class="icon-bar"></span>
 			</button>
 		</div>
+
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li<?=isset($this->active_page)&&$this->active_page==='Home'?' class=active':null?>>
+				<li<?=isset($this->active_page)&&$this->active_page==='home'?' &nbsp; class="active"':null?>>
 					<a href="<?php echo $this->url('home') ?>">ГЛАВНАЯ</a>
 				</li>
-				<li <?php isset($this->active_page)&&$this->active_page==='AboutUs'?' class=active':null?> >
-					<a href="<?php echo $this->url('page') ?>">О НАС</a>
+				<li<?=isset($this->active_page)&&$this->active_page==='aboutus'?' &nbsp; class="active"':null?>>
+					<a href="<?php echo $this->url('aboutus') ?>">О НАС</a>
+				</li>
+				<li<?=isset($this->active_page)&&$this->active_page==='contacts'?' &nbsp; class="active"':null?>>
+					<a href="<?php echo $this->url('contacts') ?>">КОНТАКТЫ</a>
 				</li>
 			</ul>
 		</div><!--/.nav-collapse -->
@@ -48,7 +52,7 @@
 <footer class="modal-footer down">
 	<p>&copy; <?=date("Y")?> Минский областной институт развития образования</p>
 	<p>Центр информатизации образования</p>
-	<p><a href="mailto:adm@moiro.by">adm@moiro.by</a></p>
+	<p><a href="mailto:adm@moiro.by" >adm@moiro.by</a></p>
 	<p><a href="http://moiro.by/" target="_blank">http://moiro.by</a></p>
 </footer>
 </body>
@@ -74,5 +78,5 @@
     if (w.opera == "[object Opera]") {
 		d.addEventListener("DOMContentLoaded", f, false);
 	} else { f(); }
-})(document, window, "yandex_metrika_callbacks");')->prependFile('http://consultsystems.ru/script/17620/'); ?>
+})(document, window, "yandex_metrika_callbacks");'); ?>
 </html>

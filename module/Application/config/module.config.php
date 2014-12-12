@@ -10,11 +10,12 @@
 return array(
 	'router' => array(
 		'routes' => array(
-			'home' => array(
+			'/' => array(
 				'type' => 'Zend\Mvc\Router\Http\Literal',
 				'options' => array(
 					'route'    => '/',
 					'defaults' => array(
+						'__NAMESPACE__' => 'Application\Controller',
 						'controller' => 'Application\Controller\Index',
 						'action'     => 'index',
 					),
@@ -24,17 +25,26 @@ return array(
 			// new controllers and actions without needing to create a new
 			// module. Simply drop new controllers in, and you can access them
 			// using the path /application/:controller/:action
-			'contact' => array(
+			'contacts' => array(
 				'type' => 'segment',
 				'options' => array(
-					'route'    => '/contact[/:action][/:id][/id_user/:id_user]',
-					'constraints'=>array(
-						'action'=>"[a-zA-Z][a-zA-Z0-9_-]*",
-						'id'=>"[0-9]+"
-					),
+					'route'    => '/contacts',
 					'defaults' => array(
-						'controller' => 'Application\Controller\Contact',
-						'action'     => 'index',
+						'__NAMESPACE__' => 'Application\Controller',
+						'controller' => 'Application\Controller\Index',
+						'action'     => 'contacts',
+					),
+				),
+			),
+
+			'aboutus' => array(
+				'type' => 'segment',
+				'options' => array(
+					'route'    => '/aboutus',
+					'defaults' => array(
+						'__NAMESPACE__' => 'Application\Controller',
+						'controller' => 'Application\Controller\Index',
+						'action'     => 'aboutus',
 					),
 				),
 			),
@@ -54,10 +64,10 @@ return array(
 				),
 			),
 
-			'application' => array(
+			'home' => array(
 				'type'    => 'Literal',
 				'options' => array(
-					'route'    => '/application',
+					'route'    => '/home',
 					'defaults' => array(
 						'__NAMESPACE__' => 'Application\Controller',
 						'controller'    => 'Index',

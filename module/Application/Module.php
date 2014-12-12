@@ -1,17 +1,9 @@
 <?php
-/**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
-
 namespace Application;
 
-use Application\Model\ContactTable;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Application\Model\PictureTable;
 
 class Module{
 	public function onBootstrap(MvcEvent $e)
@@ -24,9 +16,9 @@ class Module{
 	public function getServiceConfig(){
 		return array(
 			'factories'=>array(
-				'Application\Model\ContactTable' => function($serviceManager){
+				'Application\Model\PictureTable' => function($serviceManager){
 					$dbAdapter = $serviceManager->get('Zend\Db\Adapter\Adapter');
-					$table = new ContactTable($dbAdapter);
+					$table = new PictureTable($dbAdapter);
 					return $table;
 				}
 			)
