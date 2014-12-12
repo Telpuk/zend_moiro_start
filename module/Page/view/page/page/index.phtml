@@ -1,0 +1,53 @@
+<?php $this->headTitle('О НАС')?>
+
+	<h1>Мои страницы</h1>
+
+<?php if(isset($pages)): ?>
+	<?php if($acl->isAllowed($_SESSION['roleUser'],'page','add')): ?>
+		<p><a href='<?=$this->url('page', array('action' => 'add'))?>'>Добавить страницу</a></p>
+	<?php endif; ?>
+	<table class="table">
+		<thead>
+		<tr>
+			<th>Название</th>
+			<th>Содержание</th>
+			<th></th>
+			<th></th>
+		</tr>
+		</thead>
+		<tbody>
+		<?php foreach($pages as $page):?>
+			<tr>
+				<td><?=$page->title?></td>
+				<td style="width: 500px"><?=$page->article?></td>
+				<td>
+					[<a href='<?=$this->url('page', array('action' => 'update', 'id'=>$page->id_page))?>'>Редактировать</a>]&af;
+					[<a href='<?=$this->url('page', array('action' => 'delete', 'id'=>$page->id_page))?>'>Удалить</a>]
+				</td>
+			</tr>
+		<?php endforeach; ?>
+		</tbody>
+	</table>
+<?php else: ?>
+	<?php $form->prepare() ?>
+	<?= $this->form()->openTag($form) ?>
+	<!--устанавливаем action формы-->
+	<dl class="zend_form">
+		<dt><?= $this->formLabel($form->get('login')) ?></dt>
+		<dd>
+			<?= $this->formElement($form->get('login')) ?>
+			<?= $this->formElementErrors($form->get('login'),array('class'=>'error')) ?>
+		</dd>
+		<br>
+		<dt><?= $this->formLabel($form->get('password')) ?></dt>
+		<dd>
+			<?= $this->formElement($form->get('password')) ?>
+			<?= $this->formElementErrors($form->get('password'), array('class'=>'error')) ?>
+		</dd>
+		<br>
+		<dt>
+			<?= $this->formSubmit($form->get('submit')) ?>
+		</dt>
+		<?= $this->form()->closeTag() ?>
+	</dl>
+<?php endif; ?>
