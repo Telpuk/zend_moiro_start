@@ -93,6 +93,43 @@ body {
     text-align: center;
     font-size:1.5em;
 }
+/*+Module news*/
+.news .new{
+    /*border: 1px #000000 dashed;*/
+    margin-left: 150px;
+    width: 65%;
+}
+
+.news .new > header > h1{
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.news .new  > section > header{
+    border-top: 1px rgba(85, 85, 85, 0.57) solid;
+    border-bottom: 1px rgba(85, 85, 85, 0.57) solid;
+}
+
+
+.news .new > section > header > h1{
+    font-size: 1.1em;
+    font-style: italic;
+}
+
+.news .add_news{
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-left: 150px;
+    width: 65%;
+}
+.news .add_news a{
+    font-weight: bold;
+}
+
+
+/*-Module news*/
+
+
 
 footer.modal-footer.down > p{
     font-size: .9em;

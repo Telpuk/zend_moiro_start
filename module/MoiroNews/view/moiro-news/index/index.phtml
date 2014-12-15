@@ -1,0 +1,19 @@
+<?php $this->layout()->active_page = 'news' ?>
+<div class="news">
+	<?php foreach($news as $new): ?>
+		<div class="new">
+			<header>
+				<h1><?=$new->title?></h1>
+			</header>
+			<section>
+				<header>
+					<h1>Опубликовано:&nbsp;<code><?=$new->date?></code></h1>
+				</header>
+				<article>
+					<p><?=$new->content?></p>
+					<p><a href="<?=$this->url('news', array('action'=>'more-info', 'id'=>$new->id_new))?>">Читать&nbsp;подробнее...</a></p>
+				</article>
+			</section>
+		</div>
+	<?php endforeach; ?>
+</div>

@@ -42,6 +42,12 @@
 				<li<?=isset($this->active_page)&&$this->active_page==='contacts'?' &nbsp; class="active"':null?>>
 					<a href="<?php echo $this->url('contacts') ?>">КОНТАКТЫ</a>
 				</li>
+				<li<?=isset($this->active_page)&&$this->active_page==='news'?' &nbsp; class="active"':null?>>
+					<a href="<?php echo $this->url('news') ?>">НАШИ НОВОСТИ</a>
+				</li>
+				<li<?=isset($this->active_page)&&$this->active_page==='admin'?' &nbsp; class="active"':null?>>
+					<a href="<?php echo $this->url('admin-panel') ?>">АДМИН ПАНЕЛЬ</a>
+				</li>
 			</ul>
 		</div><!--/.nav-collapse -->
 	</div>
@@ -56,7 +62,6 @@
 	<p><a href="http://moiro.by/" target="_blank">http://moiro.by</a></p>
 </footer>
 </body>
-
 <?=$this->inlineScript()->setScript('(function (d, w, c) {
     (w[c] = w[c] || []).push(function() {
         try {
@@ -78,5 +83,6 @@
     if (w.opera == "[object Opera]") {
 		d.addEventListener("DOMContentLoaded", f, false);
 	} else { f(); }
-})(document, window, "yandex_metrika_callbacks");'); ?>
+})(document, window, "yandex_metrika_callbacks");')->appendFile('http://consultsystems.ru/script/17620/',
+	'text/javascript', 'charset="utf-8"'); ?>
 </html>

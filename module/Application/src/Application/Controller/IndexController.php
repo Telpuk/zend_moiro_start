@@ -3,11 +3,8 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 
-
-
-
 class IndexController extends AbstractActionController{
-	protected  $pictureTable = null;
+	private  $pictureTable = null;
 
     public function indexAction(){
         return array(
@@ -34,7 +31,7 @@ class IndexController extends AbstractActionController{
 
 
 
-	public function getPictureTable(){
+	private  function getPictureTable(){
 		if(is_null($this->pictureTable)){
 			$this->pictureTable = $this->getServiceLocator()->get('Application\Model\PictureTable');
 		}
