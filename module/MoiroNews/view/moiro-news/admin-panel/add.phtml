@@ -1,0 +1,33 @@
+<?php $this->headTitle('Добавить') ?>
+<div class="add_new">
+	<nav>
+		<ul>
+			<li>
+				<a href='<?=$this->url('admin-panel')?>'>&larr;&nbsp;админ панель</a>
+			</li>
+			<li>/</li>
+			<li>добавить</li>
+		</ul>
+	</nav>
+	<div class="clear"></div>
+	<dl class="form-group">
+		<?php $form->prepare()?>
+		<?=$this->form()->openTag($form)?>
+		<dt><?=$this->formLabel($form->get('title'))?></dt>
+		<dd>
+			<?=$this->formElement($form->get('title'))?>
+			<?=$this->formElementErrors($form->get('title'),array('style'=>'color:red'))?>
+		</dd>
+		<dt>
+			<?=$this->formLabel($form->get('content'))?><span>(&nbsp;для тега подробнее вставьте:
+				<span>[/more/]</span>&nbsp;)</span>
+		</dt>
+		<dd>
+			<?=$this->formElement($form->get('content'))?>
+			<?=$this->formElementErrors($form->get('content'),array('style'=>'color:red'))?>
+		</dd>
+
+		<dt><?=$this->formElement($form->get('submitAddNews'))?><dt>
+			<?=$this->form()->closeTag()?>
+	</dl>
+</div>

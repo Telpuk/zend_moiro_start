@@ -3197,6 +3197,10 @@ input[type="button"].btn-block {
   content: "\e122";
 }
 
+.glyphicon-bullhorn_after:after {
+    content: "\e122";
+}
+
 .glyphicon-bell:before {
   content: "\e123";
 }
@@ -4935,7 +4939,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .pagination > li {
-  display: inline;
+  display: block;
 }
 
 .pagination > li > a,

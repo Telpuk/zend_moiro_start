@@ -3,6 +3,10 @@ body {
     padding-bottom: 40px;
 }
 
+.clear{
+    clear: both;/
+}
+
 .error{
     color: red;
     background-color: rgba(255, 0, 0, 0.24);
@@ -51,7 +55,7 @@ body {
     width: auto;
 }
 .nav.navbar-nav{
-   margin-left: 150px;
+    margin-left: 150px;
 }
 
 .hovergallery img{
@@ -96,8 +100,9 @@ body {
 /*+Module news*/
 .news .new{
     /*border: 1px #000000 dashed;*/
-    margin-left: 150px;
+    margin-left: 180px;
     width: 65%;
+    margin-bottom: 40px;
 }
 
 .news .new > header > h1{
@@ -105,7 +110,8 @@ body {
     font-size: 1.2em;
 }
 
-.news .new  > section > header{
+.news .new  > section > header > h1{
+    padding: 10px;
     border-top: 1px rgba(85, 85, 85, 0.57) solid;
     border-bottom: 1px rgba(85, 85, 85, 0.57) solid;
 }
@@ -116,21 +122,73 @@ body {
     font-style: italic;
 }
 
-.news .add_news{
+.news .add_news a{
+    display: block;
+    text-align: right;
     font-size: 1.2em;
     font-weight: bold;
+    width: 80%;
+}
+
+.add_new{
     margin-left: 150px;
     width: 65%;
 }
-.news .add_news a{
+
+.add_new{
+    margin-left: 120px;
+    width: 65%;
+}
+.add_new li{
+    float: left;
+    margin-left: 10px;
+    list-style: none;
+}
+.add_new dl{
+    width: 85%;
+    margin: auto;
+}
+.add_new dt{
+    margin-top: 20px;
+}
+.add_new dd{
+    margin: 0 0 10px 20px;
+}
+
+.add_new dd input, textarea{
+    padding: 5px;
+    width: 100%;
+}
+
+.add_new dd textarea{
+    resize: vertical;
+    height: 150px;
+}
+
+.add_new dt span{
+    display: inline-block;
+    margin-left: 10px;
+    color: rgba(255, 0, 0, 0.45);
+}
+/*-Module news*/
+
+/*+paginator*/
+.pagination_news{
+    margin-left: 120px;
+    width: 65%;
+}
+
+.pagination_news li{
+    list-style: none;
+    float: left;
+    margin-left: 10px;
+}
+.pagination_news li.active a{
+   color: #000000;
     font-weight: bold;
 }
 
-
-/*-Module news*/
-
-
-
+/*-paginator*/
 footer.modal-footer.down > p{
     font-size: .9em;
     margin-right: 30px;

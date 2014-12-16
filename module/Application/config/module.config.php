@@ -21,10 +21,7 @@ return array(
 					),
 				),
 			),
-			// The following is a route to simplify getting started creating
-			// new controllers and actions without needing to create a new
-			// module. Simply drop new controllers in, and you can access them
-			// using the path /application/:controller/:action
+
 			'contacts' => array(
 				'type' => 'segment',
 				'options' => array(
@@ -45,21 +42,6 @@ return array(
 						'__NAMESPACE__' => 'Application\Controller',
 						'controller' => 'Application\Controller\Index',
 						'action'     => 'aboutus',
-					),
-				),
-			),
-
-			'auth' => array(
-				'type' => 'segment',
-				'options' => array(
-					'route'    => '/auth',
-					'constraints'=>array(
-						'action'=>"[a-zA-Z][a-zA-Z0-9_-]*",
-						'id'=>"[0-9]+"
-					),
-					'defaults' => array(
-						'controller' => 'Application\Controller\Auth',
-						'action'     => 'index',
 					),
 				),
 			),

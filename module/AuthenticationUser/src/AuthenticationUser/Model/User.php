@@ -1,9 +1,9 @@
 <?php
-namespace MoiroNews\Model;
+namespace AuthenticationUser\Model;
 
 
 
-class News{
+class User{
 	public $id_new;
 	public $title;
 	public $content;

@@ -7,8 +7,15 @@ class IndexController extends AbstractActionController{
 	private  $newsTable = null;
 
 	public function indexAction(){
+		// grab the paginator from the AlbumTable
+		$paginator = $this->getNewsTable()->fetchAll(true);
+		// set the current page to what has been passed in query string, or to 1 if none set
+		$paginator->setCurrentPageNumber((int)$this->params()->fromQuery('page', 1));
+		// set the number of items per page to 10
+		$paginator->setItemCountPerPage(5);
+
 		return array(
-			'news' => $this->getNewsTable()->fetchAll(),
+			'paginator' => $paginator
 		);
 	}
 

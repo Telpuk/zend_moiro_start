@@ -1,0 +1,24 @@
+<?php $this->headTitle('Ауторизация') ?>
+
+<div class="authentication">
+	<dl class="form-group">
+		<?php $form->prepare()?>
+		<?=$this->form()->openTag($form)?>
+		<dt><?=$this->formLabel($form->get('login'))?></dt>
+		<dd>
+			<?=$this->formElement($form->get('login'))?>
+			<?=$this->formElementErrors($form->get('login'),array('style'=>'color:red'))?>
+		</dd>
+		<dt>
+			<?=$this->formLabel($form->get('password'))?>
+		</dt>
+		<dd>
+			<?=$this->formElement($form->get('password'))?>
+			<?=$this->formElementErrors($form->get('password'),array('style'=>'color:red'))?>
+		</dd>
+
+		<dt><?=$this->formElement($form->get('submitAddNews'))?><dt>
+			<?=$this->form()->closeTag()?>
+	</dl>
+</div>
+

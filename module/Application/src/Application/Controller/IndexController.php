@@ -8,15 +8,13 @@ class IndexController extends AbstractActionController{
 
     public function indexAction(){
         return array(
-			'pictures'=>$this->getPictureTable()->fetchAll(),
-			'page_active'=>'home'
+			'pictures'=>$this->getPictureTable()->fetchAll()
 		);
     }
 
 	public function aboutUsAction(){
 		return array(
-			'pictures'=>$this->getPictureTable()->fetchAll(),
-			'page_active'=>'home'
+			'pictures'=>$this->getPictureTable()->fetchAll()
 		);
 	}
 
@@ -24,8 +22,7 @@ class IndexController extends AbstractActionController{
 
 
 		return array(
-			'pictures'=>$this->getPictureTable()->fetchAll(),
-			'page_active'=>'home'
+			'pictures'=>$this->getPictureTable()->fetchAll()
 		);
 	}
 

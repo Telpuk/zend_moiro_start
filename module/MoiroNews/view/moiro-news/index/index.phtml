@@ -1,19 +1,30 @@
+<?php $this->headTitle('Наши новости') ?>
 <?php $this->layout()->active_page = 'news' ?>
 <div class="news">
-	<?php foreach($news as $new): ?>
+	<?php foreach ($this->paginator as $new) : // <-- change here! ?>
 		<div class="new">
 			<header>
 				<h1><?=$new->title?></h1>
 			</header>
 			<section>
 				<header>
-					<h1>Опубликовано:&nbsp;<code><?=$new->date?></code></h1>
+					<h1>опубликовано:&nbsp;<code><?=$new->date?></code></h1>
 				</header>
 				<article>
 					<p><?=$new->content?></p>
-					<p><a href="<?=$this->url('news', array('action'=>'more-info', 'id'=>$new->id_new))?>">Читать&nbsp;подробнее...</a></p>
+					<p><a href="<?=$this->url('news', array('action'=>'more-info',
+							'id'=>$new->id_new))?>">читать&nbsp;подробнее&nbsp;&rarr;</a></p>
 				</article>
 			</section>
 		</div>
 	<?php endforeach; ?>
 </div>
+<?=$this->paginationControl(
+	$this->paginator,
+	'Sliding',
+	array('partial/paginator.phtml', 'Index'),
+	// the route to link to when a user clicks a control link
+	array(
+		'route' => 'news'
+	)
+); ?>

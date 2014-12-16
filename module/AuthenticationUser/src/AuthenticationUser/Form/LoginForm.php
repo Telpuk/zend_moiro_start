@@ -1,35 +1,35 @@
 <?php
-namespace MoiroNews\Form;
+namespace AuthenticationUser\Form;
 
 use Zend\Form\Form;
 
-class NewsForm extends Form{
+class LoginForm extends Form{
 
 	public function __construct($name = null){
 		parent::__construct($name);
 
 		$this->setAttribute('method', 'post');
-		$this->setAttribute('action', 'add');
+		$this->setAttribute('action', 'admin');
 
 		$this->add(array(
-			'name'=>'title',
+			'name'=>'login',
 			'attributes'=>array(
 				'type'=>'text',
-				'placeholder'=>'введите заголовок',
+				'placeholder'=>'логин',
 			),
 			'options'=>array(
-				'label'=>'ЗАГОЛОВОК НОВОСТИ'
+				'label'=>'логин'
 			)
 		));
 
 		$this->add(array(
-			'name'=>'content',
-			'type'=>'Zend\Form\Element\Textarea',
+			'name'=>'password',
 			'attributes'=>array(
-				'placeholder'=>'введите описание',
+				'type'=>'password',
+				'placeholder'=>'пароль',
 			),
 			'options'=>array(
-				'label'=>'ОПИСАНИЕ'
+				'label'=>'пароль'
 			)
 		));
 
@@ -37,7 +37,7 @@ class NewsForm extends Form{
 			'name'=>'submitAddNews',
 			'type'=>'Zend\Form\Element\Submit',
 			'attributes'=>array(
-				'value'=>'ДОБАВИТЬ'
+				'value'=>'ВОЙТИ'
 			),
 		));
 	}
