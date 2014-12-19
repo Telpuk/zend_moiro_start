@@ -63,6 +63,7 @@ body {
 }
 
 .new_on_nome  fieldset legend{
+    font-size: 1em;
     color: #285e8e;
 }
 
@@ -211,9 +212,6 @@ li.admin_nav a{
 .add_new dt{
     margin-top: 20px;
 }
-.add_new dd{
-    margin: 0 0 10px 20px;
-}
 
 .add_new dd input, textarea{
     padding: 5px;
@@ -225,10 +223,36 @@ li.admin_nav a{
     height: 150px;
 }
 
-.add_new dt span{
+.add_new #question{
+    position: relative;
     display: inline-block;
+    font-size: 1.2em;
     margin-left: 10px;
-    color: rgba(255, 0, 0, 0.45);
+    color: rgb(34, 46, 255);
+    border-bottom: 1px blue dotted;
+}
+
+.add_new #question_answer li{
+    list-style: decimal;
+}
+
+
+.add_new #question_answer{
+    display: none;
+    color: #000000;
+    width: 450px;
+    height: 90px;
+    background-color: #ffffff;
+    position: absolute;
+    padding: 10px 10px 0 20px;
+    font-size: 0.9em;
+    border: 1px #000000 solid;
+    margin-top: -110px;
+    margin-left: 100px;
+}
+
+.add_new #question:hover{
+   cursor: help;
 }
 /*-Module news*/
 

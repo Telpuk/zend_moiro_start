@@ -19,8 +19,12 @@
 			<?=$this->formElementErrors($form->get('title'),array('style'=>'color:red'))?>
 		</dd>
 		<dt>
-			<?=$this->formLabel($form->get('content'))?><span>(&nbsp;для тега подробнее вставьте:
-				<span>[/more/]</span>&nbsp;)</span>
+			<?=$this->formLabel($form->get('content'))?><span id="question">?</span>
+		<div id="question_answer">
+			<ul>
+				<li>Для вставки тега (читать подробнее) вставьте в текст [/more/]</li>
+			</ul>
+		</div>
 		</dt>
 		<dd>
 			<?=$this->formElement($form->get('content'))?>

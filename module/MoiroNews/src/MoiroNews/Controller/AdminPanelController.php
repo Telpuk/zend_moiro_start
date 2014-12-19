@@ -8,7 +8,7 @@ use Zend\Mvc\MvcEvent;
 use Zend\Session\Container;
 
 class AdminPanelController extends AbstractActionController{
-	private $newsTable = null;
+	private $_newsTable = null;
 
 	public function onDispatch(MvcEvent $e){
 		$session = new Container('user');
@@ -25,7 +25,7 @@ class AdminPanelController extends AbstractActionController{
 	}
 
 	public function indexAction(){
-		$this->layout()->active_page = 'admin';
+		$this->layout()->setVariable('active_page' ,'admin');
 		// grab the paginator from the AlbumTable
 		$paginator = $this->getNewsTable()->fetchAll(true);
 		// set the current page to what has been passed in query string, or to 1 if none set
@@ -48,6 +48,9 @@ class AdminPanelController extends AbstractActionController{
 	public function addAction(){
 		$form = new NewsForm('news');
 		$inputFilter = new NewsFormFilter();
+
+		$renderer = $this->serviceLocator->get('Zend\View\Renderer\RendererInterface');
+		$renderer->inlineScript()->appendFile($renderer->basePath() . '/js/edit.js');
 
 		if($this->request->isPost()){
 			$post = $this->request->getPost();
@@ -78,7 +81,11 @@ class AdminPanelController extends AbstractActionController{
 	}
 	public function editAction(){
 		$form = new NewsForm('news');
-		$form->get('submitAddNews')->setAttribute('value','Редактировать');
+
+		$renderer = $this->serviceLocator->get('Zend\View\Renderer\RendererInterface');
+		$renderer->inlineScript()->appendFile($renderer->basePath() . '/js/edit.js');
+
+		$form->get('submitAddNews')->setAttribute('value','РЕДАКТИРОВАТЬ');
 
 		$id = $this->params()->fromRoute('id');
 
@@ -110,10 +117,9 @@ class AdminPanelController extends AbstractActionController{
 	}
 
 	public function getNewsTable(){
-		if (!$this->newsTable) {
-			$sm = $this->getServiceLocator();
-			$this->newsTable = $sm->get('MoiroNews\Model\NewsTable');
+		if (!$this->_newsTable) {
+			$this->_newsTable = $this->getServiceLocator()->get('MoiroNews\Model\NewsTable');
 		}
-		return $this->newsTable;
+		return $this->_newsTable;
 	}
 }
