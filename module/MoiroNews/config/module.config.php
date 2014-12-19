@@ -44,7 +44,9 @@ return array(
 		),
 	),
 
-
+	'module_config'=>array(
+		'upload_location'=>__DIR__.'/../data/uploads'
+	),
 
 	//откуда будут браться views
 	'view_manager' => array(

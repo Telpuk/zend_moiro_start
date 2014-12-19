@@ -28,10 +28,10 @@ class NewsFormFilter extends InputFilter{
 		$this->add(array(
 			'name'=>'content',
 			'required'=>true,
-			'filters'=>array(
-				array('name'=>'Zend\Filter\StripTags'),
-				array('name' => 'Zend\Filter\StringTrim')
-			),
+//			'filters'=>array(
+//				array('name'=>'Zend\Filter\StripTags'),
+//				array('name' => 'Zend\Filter\StringTrim')
+//			),
 			'validators'=>array(
 				array(
 					'name' => 'NotEmpty',

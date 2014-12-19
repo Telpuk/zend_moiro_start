@@ -27,6 +27,7 @@ class NewsForm extends Form{
 			'type'=>'Zend\Form\Element\Textarea',
 			'attributes'=>array(
 				'placeholder'=>'введите описание',
+				'id'=>'content'
 			),
 			'options'=>array(
 				'label'=>'ОПИСАНИЕ'

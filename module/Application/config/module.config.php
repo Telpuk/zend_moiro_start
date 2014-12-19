@@ -47,9 +47,9 @@ return array(
 			),
 
 			'home' => array(
-				'type'    => 'Literal',
+				'type'    => 'segment',
 				'options' => array(
-					'route'    => '/home',
+					'route'    => '/home[/:action]',
 					'defaults' => array(
 						'__NAMESPACE__' => 'Application\Controller',
 						'controller'    => 'Index',

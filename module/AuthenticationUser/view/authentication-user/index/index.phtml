@@ -1,6 +1,11 @@
 <?php $this->headTitle('Ауторизация') ?>
 
 <div class="authentication">
+	<?php if(isset($auth_error) && $auth_error === true):?>
+	<div class="auth error">
+		<p>Проверьте правильность ввода логина и пароля!</p>
+	</div>
+	<?php endif?>
 	<dl class="form-group">
 		<?php $form->prepare()?>
 		<?=$this->form()->openTag($form)?>

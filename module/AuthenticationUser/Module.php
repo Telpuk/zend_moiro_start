@@ -1,12 +1,12 @@
 <?php
 namespace AuthenticationUser;
 
-
-use Zend\Db\ResultSet\ResultSet;
-use Zend\Db\TableGateway\TableGateway;
-
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Zend\Authentication\AuthenticationService;
+use Zend\Authentication\Adapter\DbTable as DbTableAuthAdapter;
+use Zend\Session\Config\SessionConfig;
+use Zend\Session\SessionManager;
 
 class Module{
 	public function onBootstrap(MvcEvent $e)
@@ -16,23 +16,20 @@ class Module{
 		$moduleRouteListener->attach($eventManager);
 	}
 
-//	public function getServiceConfig(){
-//		return array(
-//			'factories'=>array(
-//				'MoiroNews\Model\NewsTable' =>  function($sm) {
-//					$tableGateway = $sm->get('NewsTableGateway');
-//					$table = new NewsTable($tableGateway);
-//					return $table;
-//				},
-//				'NewsTableGateway' => function ($sm) {
-//					$dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-//					$resultSetPrototype = new ResultSet();
-//					$resultSetPrototype->setArrayObjectPrototype(new News());
-//					return new TableGateway('news', $dbAdapter, null, $resultSetPrototype);
-//				}
-//			)
-//		);
-//	}
+	public function getServiceConfig(){
+		return array(
+			'factories'=>array(
+				'AuthenticationUser'=>function($sm){
+					$dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+					$dbTableAuthAdapter = new DbTableAuthAdapter($dbAdapter, 'users', 'email','password','MD5(?)');
+					$authService = new AuthenticationService();
+					$authService->setAdapter($dbTableAuthAdapter);
+					$authservice = $authService;
+					return $authservice;
+				}
+			)
+		);
+	}
 
 	public function getConfig()
 	{

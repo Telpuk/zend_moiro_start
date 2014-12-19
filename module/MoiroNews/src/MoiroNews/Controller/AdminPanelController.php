@@ -4,11 +4,28 @@ namespace MoiroNews\Controller;
 use MoiroNews\Form\NewsForm;
 use MoiroNews\Form\NewsFormFilter;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Mvc\MvcEvent;
+use Zend\Session\Container;
 
 class AdminPanelController extends AbstractActionController{
 	private $newsTable = null;
 
+	public function onDispatch(MvcEvent $e){
+		$session = new Container('user');
+		if($session->offsetExists('admin')) {
+			$admin = $session->offsetGet('admin');
+			if ( !$admin && $admin !== 'authentication' ) {
+				return $this->redirect()->toRoute('admin');
+			}
+		}else{
+			return $this->redirect()->toRoute('admin');
+		}
+		$this->layout()->setVariable('admin', 'admin');
+		return parent::onDispatch($e);
+	}
+
 	public function indexAction(){
+		$this->layout()->active_page = 'admin';
 		// grab the paginator from the AlbumTable
 		$paginator = $this->getNewsTable()->fetchAll(true);
 		// set the current page to what has been passed in query string, or to 1 if none set
@@ -91,8 +108,6 @@ class AdminPanelController extends AbstractActionController{
 		}
 
 	}
-
-
 
 	public function getNewsTable(){
 		if (!$this->newsTable) {

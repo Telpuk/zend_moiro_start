@@ -1,7 +1,37 @@
-<?php $this->layout()->active_page = 'home' ?>
-
+<?php if(isset($local) && $local): ?>
+	<div class="project_local">
+		<a href="<?=$this->url('home', array('action'=>'local-project'))?>"><img src='<?=$this->basePath()
+			.'/img/project/moirolocal.png'?>'></a>
+	</div>
+<?php endif ?>
 <div class="hovergallery">
 	<?php foreach($pictures as $picture):?>
-		<a href = "<?=$picture->path_in_project?>"><img src='<?=$this->basePath().'/img/project/',$picture->file_name?>' title ='<?=$picture->description?>' /></a>
+		<a target="_blank" href = "<?=$picture->path_in_project?>"><img src='<?=$this->basePath().'/img/project/',
+			$picture->file_name?>' title ='<?=$picture->description?>' /></a>
 	<?php endforeach; ?>
 </div>
+<div class="clear"></div>
+<div class="new_on_nome">
+	<fieldset>
+		<legend>НАШИ НОВОСТИ:</legend>
+		<?php foreach($news as $new): ?>
+			<div class="left">
+				<span><?=$new->date?></span>
+				<div class="clear"></div>
+				<header>
+					<h1><?=$new->title?></h1>
+				</header>
+				<section>
+					<article>
+						<p><?=$new->content?></p>
+						<p><a href="<?=$this->url('news', array('action'=>'more-info',
+								'id'=>$new->id_new))?>">читать&nbsp;подробнее&nbsp;&rarr;</a></p>
+					</article>
+				</section>
+			</div>
+		<?php endforeach; ?>
+	</fieldset>
+	<div class="clear"></div>
+</div>
+
+

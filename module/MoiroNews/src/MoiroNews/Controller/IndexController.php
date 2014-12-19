@@ -2,9 +2,22 @@
 namespace MoiroNews\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Mvc\MvcEvent;
+use Zend\Session\Container;
 
 class IndexController extends AbstractActionController{
 	private  $newsTable = null;
+
+	public function onDispatch(MvcEvent $e){
+		$session = new Container('user');
+		if($session->offsetExists('admin')) {
+			$admin = $session->offsetGet('admin');
+			if ( $admin && $admin === 'authentication' ) {
+				$this->layout()->setVariable('admin',true);
+			}
+		}
+		return parent::onDispatch($e);
+	}
 
 	public function indexAction(){
 		// grab the paginator from the AlbumTable

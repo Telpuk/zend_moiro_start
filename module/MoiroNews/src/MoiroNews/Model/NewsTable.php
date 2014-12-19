@@ -15,13 +15,14 @@ class NewsTable{
 		$this->tableGateway = $tableGateway;
 	}
 
-	public function fetchAll($paginated = false){
+	public function fetchAll($paginated = false, $limit = 5){
+
+		$select = $this->tableGateway->getSql()->select()
+			->columns(array(new Expression('id_new, title, date, SUBSTRING_INDEX(content,"[/more/]", 1) as content')))
+			->order(array('date'=>'DESC'))->limit($limit);
+
 		if($paginated) {
 			// create a new Select object for the table album
-			$select = $this->tableGateway->getSql()->select()
-				->columns(array(new Expression('id_new, title, date, SUBSTRING_INDEX(content,"[/more/]", 1) as content')))
-				->order(array('date'=>'DESC'));
-
 			$resultSetPrototype = new ResultSet();
 
 			$resultSetPrototype->setArrayObjectPrototype(new News());
@@ -36,9 +37,6 @@ class NewsTable{
 			$paginator = new Paginator($paginatorAdapter);
 			return $paginator;
 		}
-		$select = $this->tableGateway->getSql()->select()
-			->columns(array(new Expression('id_new, title, date, SUBSTRING_INDEX(content,"[/more/]", 1) as content')))
-			->order(array('date'=>'DESC'));
 		$row = $this->tableGateway->selectWith($select);
 		return $row;
 	}

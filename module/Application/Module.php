@@ -20,7 +20,12 @@ class Module{
 					$dbAdapter = $serviceManager->get('Zend\Db\Adapter\Adapter');
 					$table = new PictureTable($dbAdapter);
 					return $table;
-				}
+				},
+				'Application\Model\PictureLocalTable' => function($serviceManager){
+					$dbAdapter = $serviceManager->get('Zend\Db\Adapter\Adapter');
+					$table = new PictureTable($dbAdapter, 'pictures_local');
+					return $table;
+				},
 			)
 		);
 	}

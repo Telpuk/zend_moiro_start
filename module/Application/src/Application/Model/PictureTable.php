@@ -8,9 +8,11 @@ use Application\Model\Picture;
 
 class PictureTable extends AbstractTableGateway{
 
-	protected $table = "project_pictures";
+	protected $table;
 
-	public function __construct(Adapter $adapter){
+	public function __construct(Adapter $adapter, $name_table = 'pictures_global'){
+		$this->table = $name_table;
+
 		$this->adapter = $adapter;
 
 		$this->resultSetPrototype = new ResultSet();

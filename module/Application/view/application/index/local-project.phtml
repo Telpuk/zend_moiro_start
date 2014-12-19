@@ -1,0 +1,6 @@
+<div class="hovergallery">
+	<?php foreach($pictures as $picture):?>
+		<a target="_blank" href = "<?=$picture->path_in_project?>"><img src='<?=$this->basePath().'/img/project/',
+			$picture->file_name?>' title ='<?=$picture->description?>' /></a>
+	<?php endforeach; ?>
+</div>

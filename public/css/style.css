@@ -43,6 +43,33 @@ body {
 .container.min{
     min-height: 500px;
 }
+.new_on_nome{
+    padding: 5px;
+    width: 100%;
+}
+
+
+.new_on_nome  fieldset > div.left{
+    margin: auto;
+    padding: 5px;
+    float: left;
+    width: 25%;
+}
+
+.new_on_nome  fieldset > div.left span{
+    color: #555555;
+    font-size: 0.8em;
+    float: right;
+}
+
+.new_on_nome  fieldset legend{
+    color: #285e8e;
+}
+
+.new_on_nome h1{
+    font-size: 1.2em;
+    font-weight: bold;
+}
 
 .hovergallery{
     margin: auto;
@@ -57,6 +84,35 @@ body {
 .nav.navbar-nav{
     margin-left: 150px;
 }
+li.admin_nav a{
+    font-weight: bold;
+    color: #285e8e !important;
+}
+
+.project_local img{
+    display: block;
+    float: right;
+
+    -webkit-transform:scale(0.8); /*Webkit: уменьшаем размер до 0.8*/
+    -moz-transform:scale(0.8); /*Mozilla: масштабирование*/
+    -o-transform:scale(0.8); /*Opera: масштабирование*/
+    -webkit-transition-duration: 0.5s; /*Webkit: длительность анимации*/
+    -moz-transition-duration: 0.5s; /*Mozilla: длительность анимации*/
+    -o-transition-duration: 0.5s; /*Opera: длительность анимации*/
+    opacity: 0.7; /*Начальная прозрачность изображений*/
+}
+
+.project_local img:hover{
+    -webkit-transform:scale(0.9); /*Webkit: увеличиваем размер до 1.2x*/
+    -moz-transform:scale(0.9); /*Mozilla: масштабирование*/
+    -o-transform:scale(0.9); /*Opera: масштабирование*/
+    box-shadow:0px 0px 30px gray; /*CSS3 тени: 30px размытая тень вокруг всего изображения*/
+    -webkit-box-shadow:0px 0px 30px gray; /*Webkit: тени*/
+    -moz-box-shadow:0px 0px 30px gray; /*Mozilla: тени*/
+    opacity: 1;
+    cursor: pointer;
+}
+
 
 .hovergallery img{
     -webkit-transform:scale(0.8); /*Webkit: уменьшаем размер до 0.8*/
@@ -103,6 +159,10 @@ body {
     margin-left: 180px;
     width: 65%;
     margin-bottom: 40px;
+}
+
+#news ul{
+    padding: 0;
 }
 
 .news .new > header > h1{
@@ -184,9 +244,45 @@ body {
     margin-left: 10px;
 }
 .pagination_news li.active a{
-   color: #000000;
+    color: #000000;
     font-weight: bold;
 }
+
+/*+authentication*/
+.authentication{
+    width: 50%;
+    margin: auto;
+}
+
+.authentication ul{
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.authentication label{
+    font-size: 1.5em;
+}
+
+.auth.error{
+    width: 65%;
+    text-align: center;
+}
+
+
+.authentication input{
+    width: 65%;
+    margin: auto;
+    padding: 5px;
+}
+
+.authentication ul li{
+    list-style: none;
+}
+
+.authentication input[type=submit]{
+    margin-top: 20px;
+}
+/*-authentication*/
 
 /*-paginator*/
 footer.modal-footer.down > p{
