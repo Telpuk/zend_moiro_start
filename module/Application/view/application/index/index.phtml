@@ -1,14 +1,10 @@
-<?php if(isset($local) && $local): ?>
-	<div class="project_local">
-		<a href="<?=$this->url('home', array('action'=>'local-project'))?>"><img src='<?=$this->basePath()
-			.'/img/project/moirolocal.png'?>'></a>
-	</div>
-<?php endif ?>
 <div class="hovergallery">
 	<?php foreach($pictures as $picture):?>
 		<a target="_blank" href = "<?=$picture->path_in_project?>"><img src='<?=$this->basePath().'/img/project/',
 			$picture->file_name?>' title ='<?=$picture->description?>' /></a>
 	<?php endforeach; ?>
+	<a href="<?=$this->url('home', array('action'=>'local-project'))?>"><img src='<?=$this->basePath()
+		.'/img/project/moirolocal.png'?>'></a>
 </div>
 <div class="clear"></div>
 <div class="new_on_nome">
