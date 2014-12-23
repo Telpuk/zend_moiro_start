@@ -45,7 +45,7 @@ return array(
 	),
 
 	'module_config'=>array(
-		'upload_location'=>__DIR__.'/../data/uploads'
+		'upload_location'=>'/var/www/zend_moiro_start/data/uploads'
 	),
 
 	//откуда будут браться views

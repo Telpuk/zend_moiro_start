@@ -241,7 +241,7 @@ li.admin_nav a{
     display: none;
     color: #000000;
     width: 450px;
-    height: 90px;
+    min-height: 60px;
     background-color: #ffffff;
     position: absolute;
     padding: 10px 10px 0 20px;
@@ -249,6 +249,43 @@ li.admin_nav a{
     border: 1px #000000 solid;
     margin-top: -110px;
     margin-left: 100px;
+    z-index: 1;
+}
+
+.add_new #container_img{
+    display: none;
+    padding: 10px;
+    background-color: #ffffff;
+    width: 400px;
+    z-index: 1;
+}
+.add_new #question_answer #link_click:hover{
+    color: #285e8e;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.add_new #question_answer #upload{
+    width: 100px;
+    display: block;
+    margin-left: 50px;
+    float: left;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    border: 1px #000000 solid;
+
+}
+
+.add_new #question_answer #file{
+    width: 150px;
+    display: block;
+    float: left;
+}
+.add_new #images li{
+    margin-top: 10px;
+    display: block;
+    float: none;
 }
 
 .add_new #question:hover{

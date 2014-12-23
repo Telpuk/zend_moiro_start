@@ -10,6 +10,7 @@ class NewsForm extends Form{
 
 		$this->setAttribute('method', 'post');
 		$this->setAttribute('action', 'add');
+		$this->setAttribute('enctype', 'multipart/form-data');
 
 		$this->add(array(
 			'name'=>'title',

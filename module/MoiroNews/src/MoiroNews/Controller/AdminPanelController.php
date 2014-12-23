@@ -3,9 +3,11 @@ namespace MoiroNews\Controller;
 
 use MoiroNews\Form\NewsForm;
 use MoiroNews\Form\NewsFormFilter;
+use Zend\File\Transfer\Adapter\Http;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Mvc\MvcEvent;
 use Zend\Session\Container;
+use Zend\Validator\File\Extension;
 
 class AdminPanelController extends AbstractActionController{
 	private $_newsTable = null;
@@ -52,6 +54,9 @@ class AdminPanelController extends AbstractActionController{
 		$renderer = $this->serviceLocator->get('Zend\View\Renderer\RendererInterface');
 		$renderer->inlineScript()->appendFile($renderer->basePath() . '/js/edit.js');
 
+		$renderer->headScript()->appendFile($renderer->basePath() . '/js/cleditor1_4_4/jquery.cleditor.min.js',
+			'text/javascript')->appendFile($renderer->basePath() . '/js/jquery.form.min.js');
+
 		if($this->request->isPost()){
 			$post = $this->request->getPost();
 			$form->setInputFilter($inputFilter);
@@ -68,6 +73,31 @@ class AdminPanelController extends AbstractActionController{
 		return array(
 			'form'=>$form
 		);
+	}
+
+	public function uploadFileAction(){
+		$response = $this->getResponse();
+		$response->setStatusCode(200);
+
+		$fileUpload =  $this->params()->fromFiles('file_name');
+
+		if(is_array($fileUpload)){
+			$validator = new Extension(array('png','jpg','gif','ico','docx','doc','pdf'),true);
+			$adapter = new Http();
+			$adapter->setDestination($this->getFileUploadLocation());
+
+			if($validator->isValid($fileUpload) && $adapter->receive($fileUpload['name'])) {
+				$response->setContent('true');
+				return $response;
+			}
+		}
+		$response->setContent('false');
+		return $response;
+	}
+
+	public function getFileUploadLocation(){
+		$config  = $this->getServiceLocator()->get('config');
+		return $config['module_config']['upload_location'];
 	}
 
 	public function deleteAction(){

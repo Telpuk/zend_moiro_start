@@ -23,6 +23,18 @@
 		<div id="question_answer">
 			<ul>
 				<li>Для вставки тега (читать подробнее) вставьте в текст [/more/]</li>
+				<li>
+					<img id="loading" style="display: none" src='<?=$this->basePath().'/img/loading.gif'?>'>
+					<span id="link_click">Доступные файлы на сервере</span>
+					<div id="container_img">
+						<input type="file" id="file" name="file_name" accept="image/*">
+						<div id="upload">Загрузить</div>
+						<div class="clear"></div>
+						<div id="images">
+							<ul></ul>
+						</div>
+					</div>
+				</li>
 			</ul>
 		</div>
 		</dt>
@@ -35,3 +47,4 @@
 			<?=$this->form()->closeTag()?>
 	</dl>
 </div>
+
