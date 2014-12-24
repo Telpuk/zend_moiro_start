@@ -74,7 +74,15 @@ body {
 
 .hovergallery{
     margin: auto;
-    width: 70%;
+    width: 80%;
+}
+
+#scrollUp {
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #555;
+    color: #fff;
 }
 
 .hovergallery a{
@@ -236,18 +244,34 @@ li.admin_nav a{
     list-style: decimal;
 }
 
+.add_new  .delete:hover{
+    cursor: pointer;
+    width: 17px;
+}
+
+.add_new #close{
+    float: right;
+    text-transform: uppercase;
+    text-decoration: underline;
+    font-size: .75em;
+    color: #269abc;
+}
+
+.add_new #close:hover{
+    cursor: pointer;
+}
 
 .add_new #question_answer{
     display: none;
     color: #000000;
-    width: 450px;
+    width: 550px;
     min-height: 60px;
     background-color: #ffffff;
     position: absolute;
     padding: 10px 10px 0 20px;
     font-size: 0.9em;
     border: 1px #000000 solid;
-    margin-top: -110px;
+    margin-top: -80px;
     margin-left: 100px;
     z-index: 1;
 }
@@ -256,7 +280,7 @@ li.admin_nav a{
     display: none;
     padding: 10px;
     background-color: #ffffff;
-    width: 400px;
+    width: 100%;
     z-index: 1;
 }
 .add_new #question_answer #link_click:hover{

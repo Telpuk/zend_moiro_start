@@ -3,6 +3,7 @@ namespace MoiroNews\Controller;
 
 use MoiroNews\Form\NewsForm;
 use MoiroNews\Form\NewsFormFilter;
+use MoiroNews\Model\ScanDir;
 use Zend\File\Transfer\Adapter\Http;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Mvc\MvcEvent;
@@ -51,8 +52,10 @@ class AdminPanelController extends AbstractActionController{
 		$form = new NewsForm('news');
 		$inputFilter = new NewsFormFilter();
 
+		$files = $this->getDirFile($this->getFileUploadLocation());
+
 		$renderer = $this->serviceLocator->get('Zend\View\Renderer\RendererInterface');
-		$renderer->inlineScript()->appendFile($renderer->basePath() . '/js/edit.js');
+		$renderer->inlineScript()->appendFile($renderer->basePath() . '/js/add.js');
 
 		$renderer->headScript()->appendFile($renderer->basePath() . '/js/cleditor1_4_4/jquery.cleditor.min.js',
 			'text/javascript')->appendFile($renderer->basePath() . '/js/jquery.form.min.js');
@@ -64,6 +67,7 @@ class AdminPanelController extends AbstractActionController{
 			if(!$form->isValid()){
 				$form->setData($form->getData());
 				return array(
+					'files'=>$files,
 					'form'=>$form
 				);
 			}
@@ -71,9 +75,11 @@ class AdminPanelController extends AbstractActionController{
 			return $this->redirect()->toRoute(null,array('controller'=>'admin-panel', 'action'=>'index'));
 		}
 		return array(
+			'files'=>$files,
 			'form'=>$form
 		);
 	}
+
 
 	public function uploadFileAction(){
 		$response = $this->getResponse();
@@ -90,6 +96,21 @@ class AdminPanelController extends AbstractActionController{
 				$response->setContent('true');
 				return $response;
 			}
+		}
+		$response->setContent('false');
+		return $response;
+	}
+
+	public function deleteFileAction(){
+		$response = $this->getResponse();
+		$response->setStatusCode(200);
+
+		$fileUpload =  $this->params()->fromPost('name_file');
+
+		if(!empty($fileUpload)){
+			unlink($this->getFileUploadLocation()."/{$fileUpload}");
+			$response->setContent('true');
+			return $response;
 		}
 		$response->setContent('false');
 		return $response;
@@ -112,8 +133,13 @@ class AdminPanelController extends AbstractActionController{
 	public function editAction(){
 		$form = new NewsForm('news');
 
+		$files = $this->getDirFile($this->getFileUploadLocation());
+
 		$renderer = $this->serviceLocator->get('Zend\View\Renderer\RendererInterface');
 		$renderer->inlineScript()->appendFile($renderer->basePath() . '/js/edit.js');
+
+		$renderer->headScript()->appendFile($renderer->basePath() . '/js/cleditor1_4_4/jquery.cleditor.min.js',
+			'text/javascript')->appendFile($renderer->basePath() . '/js/jquery.form.min.js');
 
 		$form->get('submitAddNews')->setAttribute('value','РЕДАКТИРОВАТЬ');
 
@@ -123,6 +149,7 @@ class AdminPanelController extends AbstractActionController{
 			$data = $this->getNewsTable()->fetchIdNew( $id );
 			$form->bind( $data );
 			return array(
+				'files'=>$files,
 				'id'=>$id,
 				'form' => $form
 			);
@@ -134,6 +161,7 @@ class AdminPanelController extends AbstractActionController{
 			if ( !$form->isValid() ) {
 				$form->setData($post);
 				return array(
+					'files'=>$files,
 					'id'=>$id,
 					'form' => $form
 				);
@@ -144,6 +172,11 @@ class AdminPanelController extends AbstractActionController{
 			return $this->redirect()->toRoute(null,array('controller'=>'admin-panel', 'action'=>'index'));
 		}
 
+	}
+
+	public function getDirFile($dir=null){
+		$files = new ScanDir($dir);
+		return $files->startScanDir();
 	}
 
 	public function getNewsTable(){

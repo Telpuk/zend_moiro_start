@@ -21,6 +21,7 @@
 		<dt>
 			<?=$this->formLabel($form->get('content'))?><span id="question">?</span>
 		<div id="question_answer">
+			<div  id="close">закрыть</div>
 			<ul>
 				<li>Для вставки тега (читать подробнее) вставьте в текст [/more/]</li>
 				<li>
@@ -31,7 +32,15 @@
 						<div id="upload">Загрузить</div>
 						<div class="clear"></div>
 						<div id="images">
-							<ul></ul>
+							<ul>
+								<?php foreach($files as $file):?>
+									<li>
+										<a target="_blank" href="<?=$this->basePath()."/files_upload/{$file}"?>"><?=$this->basePath()."http://adm.moiro/moiro/public/files_upload/{$file}"?></a>&nbsp;&nbsp;
+										<img class="delete" data-name="<?=$file?>" src='<?=$this->basePath()
+										.'/img/delete.png'?>'>
+									</li>
+								<?php endforeach; ?>
+							</ul>
 						</div>
 					</div>
 				</li>

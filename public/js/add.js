@@ -26,12 +26,11 @@
         this.$upload.on('click', {self: this} ,function(event){
             var $file_name= $('#file');
             var $news= $('#news');
-            var $old_attr =  $news.attr('action');
 
             if($file_name.val()) {
                 event.data.self.$loading.show(3);
 
-                $news.attr('action', './../upload-file');
+                $news.attr('action', 'upload-file');
 
                 $news.ajaxForm(function (data) {
                     if($.trim(data)==='true'){
@@ -44,7 +43,7 @@
                 }).submit();
             }
             $news.unbind();
-            $news.attr('action', $old_attr);
+            $news.attr('action', 'add');
             return false;
         });
 
@@ -61,7 +60,7 @@
                 var name_file = $element.data('name');
                 event.data.self.$loading.show(3);
                 var self = event.data.self;
-                $.post( "./../delete-file",{'name_file':name_file},function( data ) {
+                $.post( "delete-file",{'name_file':name_file},function( data ) {
                     if($.trim(data)==='true') {
                         self.$loading.fadeOut(8);
                         $element.parent().remove();
